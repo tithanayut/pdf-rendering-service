@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 
 const app = express();
 
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
     const url = req.query.url;
     if (!url) {
         return res
