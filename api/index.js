@@ -1,5 +1,5 @@
 const express = require("express");
-const puppeteer = require("puppeteer");
+const playwright = require("playwright-aws-lambda");
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.get("/api", async (req, res) => {
             .json({ errors: ["url not found in query params"] });
     }
 
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await playwright.launchChromium({ headless: true });
     const page = await browser.newPage();
     await page.goto(url, {
         waitUntil: "networkidle0",
